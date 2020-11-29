@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"> <changeSet 
+	id="1" author="bamri"> <createTable tableName="school"> <column name="id" 
+	type="bigint"> <constraints primaryKey="true" nullable="false" /> </column> 
+	<column name="date_etablissement" type="date"> <constraints nullable="true" 
+	/> </column> <column name="name" type="varchar(50)"> <constraints nullable="false" 
+	/> </column> </createTable> <addAutoIncrement columnDataType="bigint" columnName="id" 
+	incrementBy="1" startWith="1" tableName="school" /> </changeSet> <changeSet 
+	id="2" author="amri"> <loadData file="db/changelogs/data/school.csv" separator=";" 
+	tableName="school"> <column name="id" type="numeric" /> <column name="date_etablissement" 
+	type="date" /> <column name="name" type="string" /> </loadData> <loadData 
+	file="db/changelogs/data/formation.csv" separator=";" tableName="formation"> 
+	</loadData> <loadData file="db/changelogs/data/filiere.csv" separator=";" 
+	tableName="filiere"> </loadData> <loadData file="db/changelogs/data/module.csv" 
+	separator=";" tableName="module"> </loadData> <loadData file="db/changelogs/data/matiere.csv" 
+	separator=";" tableName="matiere"> </loadData> <loadData file="db/changelogs/data/student.csv" 
+	separator=";" tableName="student"> </loadData> <loadData file="db/changelogs/data/diplome.csv" 
+	separator=";" tableName="diplome"> </loadData> </changeSet> </databaseChangeLog> -->
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="11" author="bamri">
+		<createTable tableName="school">
+			<column name="id" type="bigint">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="dateEtablissement" type="date">
+				<constraints nullable="true" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<addAutoIncrement columnDataType="bigint"
+			columnName="id" incrementBy="1" startWith="1" tableName="school" />
+		<createTable tableName="task">
+			<column name="id" type="bigint">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="description" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+			<column name="libelle" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<addAutoIncrement columnDataType="bigint"
+			columnName="id" incrementBy="1" startWith="1" tableName="task" />
+	</changeSet>
+
+	<changeSet id="111" author="bamri">
+		<loadData file="db/changelogs/data/task.csv" separator=";"
+			tableName="task">
+			<column name="id" type="numeric" />
+			<column name="description" type="string" />
+			<column name="libelle" type="string" />
+		</loadData>
+		<loadData file="db/changelogs/data/school.csv" separator=";"
+			tableName="school">
+			<column name="id" type="NUMERIC" />
+			<column name="dateEtablissement" type="DATE" />
+			<column name="name" type="STRING" />
+		</loadData>
+	</changeSet>
+</databaseChangeLog>
